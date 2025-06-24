@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: #eee;
+    margin: 2rem;
+    text-align: center;
+  }
+
+  h1 {
+    color: #eee;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    color: #eee;
+  }
+
+  .view-toggle,
+  .type-toggle {
+    background: rgba(20, 20, 20, 0.7);
+    color: #eee;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease-out, background 0.3s ease-out;
+  }
+.overlay-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  display: none;
+  background: rgba(255, 255, 255, 0.05); /* semi-transparent */
+  backdrop-filter: blur(20px); /* THE FROST!! */
+  -webkit-backdrop-filter: blur(10px); /* Safari needs her own */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+  .view-toggle:hover,
+  .type-toggle:hover {
+    background: rgba(55, 55, 55, 0.7);
+    transform: scale(1.1) translate(0, 1px);
+  }
+
+  .intro {
+    margin-bottom: 2rem;
+  }
+
+  .scroll-container {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+  }
+
+  .scroll-container::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .scroll-container::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+  }
+
+  .tile {
+    flex: 0 0 auto;
+    width: 260px;
+    background: rgba(30, 30, 30, 0.6);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease;
+    scroll-snap-align: start;
+    text-align: left;
+  }
+
+  .tile:hover {
+    transform: scale(1.03);
+    background: rgba(55, 55, 55, 0.6);
+  }
+
+  .project-thumbnail {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 0.8rem;
+    background: #222;
+  }
+
+.overlay-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(30, 30, 30, 0.8);
+  color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px black;
+  z-index: 1000;
+
+  display: none;            /* horizontal layout */
+
+
+  gap: 1rem;
+  max-width: 90vw;
+}
+
+.overlay-card img {
+  align-items: center;
+  width: 300px;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 0;
+}
+
+  .project-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ff8dd3;
+    margin-bottom: 0.3rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+    color: #ccc;
+    margin-bottom: 0.4rem;
+  }
+
+  .details {
+    font-size: 0.85rem;
+    color: #999;
+  }
+  .tile-header {
+      background: rgba(30, 30, 30, 0.6);
+      border-radius: 8px;
+      padding: 1rem;
+      transition: transform 0.2s ease;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      align-items: center;
+      gap: 1rem;
+    }
+.overlay-card.show {
+  animation: popIn 0.2s ease-out;
+}
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translate(-50%, -50%);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translate(-50%, -50%);
+  }
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="overlay-backdrop" id="overlayBackdrop" onclick="closeCard()"></div>
+<div class="overlay-card" id="overlayCard">
+  <img id="cardImg" src="" alt="Cover Art" />
+  <div class="card-details">
+  <h1 id="cardTitle"></h1>
+  <p id="cardDate"></p>
+  <p id="cardartists"></p>
+  <a id="cardurl">email!</a>
+  <br></br>
+  <button onclick="closeCard()" style="margin-top: 1rem; background:#1DB954; border:none; color:#121212; padding:0.5rem 1rem; border-radius:5px; cursor:pointer;">Close</button>
+</div>
+</div>
+
+<div class="intro tile-header">
+  <h1><strong>hi, i'm Kurena! a dev and avid weird person</strong></h1>
+  <p>Here are some of my interests and projects!</p>
+  <div style="display: flex; align-items: right;">
+  <button class="view-toggle" style="position:relative;left: 85%;" onclick="showCard('who am i?', 'I am a very cool person, i work a lot and i do voice acting as well!')">So... who IS kurena?</button>
+    <div>
+</div></div></div>
+
+<h2>🌟 Interests</h2>
+<div class="scroll-container" id="interests-container">
+  <div class="tile">
+    <img src="interest1.png" alt="Interest A" class="project-thumbnail">
+    <div class="project-title">Programming</div>
+    <div class="description">i use JS HTML CSS and python</div>
+    <div class="details">4 years</div>
+  </div>
+
+  <div class="tile">
+    <img src="interest2.png" alt="Interest B" class="project-thumbnail">
+    <div class="project-title">LLM research</div>
+    <div class="description">i work, a lot, and i hate ai</div>
+    <div class="details">I HATE AI RAHH</div>
+  </div>
+
+  <div class="tile">
+    <img src="interest3.png" alt="Interest C" class="project-thumbnail">
+    <div class="project-title">Voice Actor work</div>
+    <div class="description">lots of it, i like doing it</div>
+    <div class="details">pls email me to learn more(in the so who is kurena thing)</div>
+  </div>
+</div>
+
+<h2>🚀 Projects</h2>
+<div class="scroll-container" id="project-container">
+  <div class="tile">
+
+    <div class="project-title">Project woof woof</div>
+    <div class="description">This page!</div>
+    <div class="details">Rank 1 • Completed June 2025</div>
+  </div>
+
+
+  <div class="tile">
+
+    <div class="project-title">Project Geminichan!</div>
+    <div class="description">The LLM models that will change it all, on discord!</div>
+    <div class="details">Rank 2 • V2.1.3 (they have full subconcious systems)</div>
+  </div>
+
+  <div class="tile">
+
+    <div class="project-title">Project MOKI</div>
+    <div class="description">To be revealed hehe...</div>
+    <div class="details">Rank 3 • In Progress</div>
+  </div>
+</div>
+
+<h2>Teams</h2>
+<div class="scroll-container" id="project-container">
+  <div class="tile">
+
+    <div class="project-title">Undecisive Modders</div>
+    <div class="description">very cool group!</div>
+    <div class="details"><a href="https://undecisive-modders.github.io">link to...</a></div>
+  </div>
+
+
+
+</div>
+
+
+
+
+
+</body>
+<script>
+let isCardOpen = null
+function showCard(title, date) {
+  const card = document.getElementById('overlayCard');
+  const backdrop = document.getElementById('overlayBackdrop');
+  imgSrc = "https://avatars.githubusercontent.com/u/128738437?v=4&size=1024"
+  artists = "yeah i dont know either"
+  document.getElementById('cardImg').src = imgSrc;
+  document.getElementById('cardTitle').textContent = title;
+  document.getElementById('cardartists').textContent = artists;
+  document.getElementById('cardDate').textContent = date;
+  document.getElementById('cardurl').href = "mailto:kurena.rcmc@gmail.com";
+  isCardOpen = "yes"
+  card.classList.add('show');
+  card.style.display = 'block';
+  backdrop.style.display = 'block';
+}
+function closeCard() {
+  const card = document.getElementById('overlayCard');
+  const backdrop = document.getElementById('overlayBackdrop');
+  isCardOpen = "no"
+  card.classList.remove('show');
+  card.style.display = 'none';
+  backdrop.style.display = 'none';
+}
+</script>
+
+</html>
