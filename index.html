@@ -171,7 +171,7 @@
 
 <div class="overlay-backdrop" id="overlayBackdrop" onclick="closeCard()"></div>
 <div class="overlay-card" id="overlayCard">
-  <img id="cardImg" src="" alt="Cover Art" />
+  <img id="cardImg" src="" />
   <div class="card-details">
   <h1 id="cardTitle"></h1>
   <p id="cardDate"></p>
@@ -186,11 +186,11 @@
   <h1><strong>hi, i'm Kurena! a dev and avid weird person</strong></h1>
   <p>Here are some of my interests and projects!</p>
   <div style="display: flex; align-items: right;">
-  <button class="view-toggle" style="position:relative;left: 85%;" onclick="showCard('who am i?', 'I am a very cool person, i work a lot and i do voice acting as well!')">So... who IS kurena?</button>
+  <button class="view-toggle" style="position:relative;left: 85%;" onclick="showCardAbout('who am i?', 'I am a very cool person, i work a lot and i do voice acting as well!')">So... who IS kurena?</button>
     <div>
 </div></div></div>
 
-<h2>🌟 Interests</h2>
+<h2>Interests</h2>
 <div class="scroll-container" id="interests-container">
   <div class="tile">
     <img src="interest1.png" alt="Interest A" class="project-thumbnail">
@@ -214,9 +214,9 @@
   </div>
 </div>
 
-<h2>🚀 Projects</h2>
+<h2>Projects</h2>
 <div class="scroll-container" id="project-container">
-  <div class="tile">
+  <div class="tile" onclick="showCard('This site!', 'not much to see here, have a github repo', 'started june 2025', 'https://github.com/kurenathedev/website')">
 
     <div class="project-title">Project woof woof</div>
     <div class="description">This page!</div>
@@ -224,18 +224,26 @@
   </div>
 
 
-  <div class="tile">
+  <div class="tile" onclick="showCard('Geminichan!', 'Geminichan is a series of AI LLMs designed to have (simulated) emotional cortextes', 'started dec 2024', 'https://discord.com/oauth2/authorize?client_id=1366111121991405658')">
 
     <div class="project-title">Project Geminichan!</div>
     <div class="description">The LLM models that will change it all, on discord!</div>
     <div class="details">Rank 2 • V2.1.3 (they have full subconcious systems)</div>
   </div>
 
-  <div class="tile">
+  <div class="tile" onclick="showCard('OpenStats', 'not much to see here, have a github repo', 'completed june 2025', 'https://github.com/kurenathedev/OpenStats')">
+
+    <div class="project-title">Project OpenStats</div>
+    <div class="description">An open source simple webapp for viewing spotify stats!</div>
+    <div class="details">Rank 3 • Completed June 2025</div>
+  </div>
+
+
+  <div class="tile" onclick="showCard('MOKI', 'To be revealed', 'started feb 2025', 'nolink')">
 
     <div class="project-title">Project MOKI</div>
     <div class="description">To be revealed hehe...</div>
-    <div class="details">Rank 3 • In Progress</div>
+    <div class="details">Rank 4 • In Progress</div>
   </div>
 </div>
 
@@ -259,7 +267,7 @@
 </body>
 <script>
 let isCardOpen = null
-function showCard(title, date) {
+function showCardAbout(title, date) {
   const card = document.getElementById('overlayCard');
   const backdrop = document.getElementById('overlayBackdrop');
   imgSrc = "https://avatars.githubusercontent.com/u/128738437?v=4&size=1024"
@@ -268,12 +276,35 @@ function showCard(title, date) {
   document.getElementById('cardTitle').textContent = title;
   document.getElementById('cardartists').textContent = artists;
   document.getElementById('cardDate').textContent = date;
+      document.getElementById('cardurl').textContent = "send me an email!";
   document.getElementById('cardurl').href = "mailto:kurena.rcmc@gmail.com";
   isCardOpen = "yes"
   card.classList.add('show');
   card.style.display = 'block';
   backdrop.style.display = 'block';
 }
+
+function showCard(title, date, artists, link) {
+  const card = document.getElementById('overlayCard');
+  const backdrop = document.getElementById('overlayBackdrop');
+
+  document.getElementById('cardTitle').textContent = title;
+  document.getElementById('cardartists').textContent = artists;
+  document.getElementById('cardDate').textContent = date;
+  if (link == "nolink"){
+  document.getElementById('cardurl').display = "none";
+      document.getElementById('cardurl').textContent = "";
+  } else {
+    document.getElementById('cardurl').textContent = "link to...";
+    document.getElementById('cardurl').href = link;
+
+  }
+  isCardOpen = "yes"
+  card.classList.add('show');
+  card.style.display = 'block';
+  backdrop.style.display = 'block';
+}
+
 function closeCard() {
   const card = document.getElementById('overlayCard');
   const backdrop = document.getElementById('overlayBackdrop');
