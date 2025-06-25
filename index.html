@@ -288,7 +288,7 @@ function showCardAbout(title, date) {
 function showCard(title, date, artists, link) {
   const card = document.getElementById('overlayCard');
   const backdrop = document.getElementById('overlayBackdrop');
-
+  document.getElementById('cardImg').src = "";
   document.getElementById('cardTitle').textContent = title;
   document.getElementById('cardartists').textContent = artists;
   document.getElementById('cardDate').textContent = date;
