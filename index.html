@@ -1,133 +1,418 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
+<html lang="en">
+<head>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: #eee;
+    margin: 2rem;
+    text-align: center;
+  }
+
+  h1 {
+    color:  rgb(255, 141, 211);
+    margin-bottom: 1rem;
+  }
+
+  a {
+    color: #eee;
+  }
+#project-container .tile:hover {
+    cursor: pointer;
+
+
+}
+  .view-toggle,
+  .type-toggle {
+    background: rgba(255, 141, 211, 0.2);
+    color: #eee;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease-out, background 0.3s ease-out;
+  }
+.overlay-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  display: none;
+  background: rgba(255, 255, 255, 0.05); /* semi-transparent */
+  backdrop-filter: blur(20px); /* THE FROST!! */
+  -webkit-backdrop-filter: blur(10px); /* Safari needs her own */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+  .view-toggle:hover,
+  .type-toggle:hover {
+    background: rgba( 255, 141, 211, 0.4);
+    transform: scale(1.1) translate(0, 1px);
+  }
+
+  .intro {
+    margin-bottom: 2rem;
+  }
+
+  .scroll-container {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+  }
+
+  .scroll-container::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .scroll-container::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+  }
+
+  .tile {
+    flex: 0 0 auto;
+    width: 260px;
+    background: rgba(30, 30, 30, 0.6);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease;
+    scroll-snap-align: start;
+    text-align: left;
+  }
+
+  .tile img {
+  background: none;
+  }
+
+
+  .tile:hover {
+    transform: scale(1.03);
+    background: rgba(55, 55, 55, 0.6);
+  }
+
+  .project-thumbnail {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 0.8rem;
+    background: #222;
+  }
+
+.overlay-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(30, 30, 30, 0.8);
+  color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px black;
+  z-index: 1000;
+
+  display: none;            /* horizontal layout */
+
+
+  gap: 1rem;
+  max-width: 90vw;
+}
+
+.overlay-card img {
+  align-items: center;
+  width: 300px;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 0;
+}
+
+  .project-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ff8dd3;
+    margin-bottom: 0.3rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+    color: #ccc;
+    margin-bottom: 0.4rem;
+  }
+
+  .details {
+    font-size: 0.85rem;
+    color: #999;
+  }
+  .tile-header {
+      background: rgba(30, 30, 30, 0.6);
+      border-radius: 8px;
+      padding: 1rem;
+      transition: transform 0.2s ease;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      align-items: center;
+      gap: 1rem;
+    }
+.overlay-card.show {
+  animation: popIn 0.2s ease-out;
+}
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translate(-50%, -50%);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translate(-50%, -50%);
+  }
+}
+
+#overthingy {
+  backdrop-filter: blur(40px); /* THE FROST!! */
+  -webkit-backdrop-filter: blur(10px); /* Safari needs her own */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.6;
+  pointer-events: none;
+  transition: opacity 1s ease;
+  background: rgba(20, 20, 20, 0.4);
+}
+#perlinCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2000;
+  opacity: 0.2;
+  pointer-events: none;
+}
+</style>
+<title>kurena's home page!</title>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
-  </head>
-  <body>
-    <button id="gifButton" style="position: fixed; top: 10px; right: 10px; z-index: 10000;">Record GIF</button>
-  <!-- We'll use CCapture.js for better GIF recording -->
-  <script src="https://cdn.jsdelivr.net/npm/ccapture.js@1.1.0/build/CCapture.all.min.js"></script>
-<canvas id="perlinCanvas" width="800" height="800" style="z-index: -2000;position: absolute;top:0%;left: 0;width: -moz-available;width: -webkit-fill-available; height: 140%;"></canvas>
-  <script src="https://cdn.jsdelivr.net/npm/gif.js.optimized@1.0.1/dist/gif.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+</head>
+
+<body>
+
+  <div id="overthingy"></div>
+ <video id="perlinCanvas" autoplay loop muted playsinline>
+    <source src="noise.webm" type="video/webm">
+    Your browser does not support the video tag.
+  </video>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+
+<div class="overlay-backdrop" id="overlayBackdrop" onclick="closeCard()"></div>
+<div class="overlay-card" id="overlayCard">
+  <img id="cardImg" src="">
+  <div class="card-details">
+  <h1 id="cardTitle"></h1>
+  <p id="cardDate"></p>
+  <p id="cardartists"></p>
+  <a id="cardurl">email!</a>
+  <br><br>
+  <button onclick="closeCard()" style="margin-top: 1rem; background:#1DB954; border:none; color:#121212; padding:0.5rem 1rem; border-radius:5px; cursor:pointer;">Close</button>
+</div>
+</div>
+
+<div class="intro tile-header">
+  <h1><strong>hi, i'm kurena! a dev and avid weird person</strong></h1>
+  <p>Here are some of my interests and projects!</p>
+  <div style="display: flex; align-items: right;">
+  <button class="view-toggle" style="position:relative;" onclick="showCardAbout('who am i?', 'I am a very cool person, i work a lot and i do voice acting as well!')">So... who IS kurena?</button>
+    <div>
+</div></div></div>
+
+<h2>Interests</h2>
+<div class="scroll-container" id="interests-container">
+  <div class="tile">
+    <img src="interest1.png" alt="Interest A" class="project-thumbnail">
+    <div class="project-title">Programming</div>
+    <div class="description">i use JS HTML CSS and python</div>
+    <div class="details">4 years</div>
+  </div>
+
+  <div class="tile">
+    <img src="interest2.png" alt="Interest B" class="project-thumbnail">
+    <div class="project-title">LLM research</div>
+    <div class="description">i work, a lot, and i develop and hate ai</div>
+    <div class="details">I HATE AI RAHH</div>
+  </div>
+
+  <div class="tile">
+    <img src="interest3.png" alt="Interest C" class="project-thumbnail">
+    <div class="project-title">Voice Actor work</div>
+    <div class="description">lots of it, i like doing it</div>
+    <div class="details">pls email me to learn more(in the so who is kurena thing)</div>
+  </div>
+</div>
+
+<h2>Projects</h2>
+<div class="scroll-container" id="project-container">
+  <div class="tile" onclick="showCard('This site!', 'not much to see here, have a github repo', 'started june 2025', 'https://github.com/kurenathedev/website')">
+
+    <div class="project-title">Project woof woof</div>
+    <div class="description">This page!</div>
+    <div class="details">Rank 1 • Completed June 2025</div>
+  </div>
+
+
+  <div class="tile" onclick="showCard('Geminichan!', 'Geminichan is a series of AI LLMs designed to have (simulated) emotional cortextes', 'started dec 2024', 'https://discord.com/oauth2/authorize?client_id=1366111121991405658')">
+
+    <div class="project-title">Project Geminichan!</div>
+    <div class="description">The LLM models that will change it all, on discord!</div>
+    <div class="details">Rank 2 • V2.1.3 (they have full subconcious systems)</div>
+  </div>
+
+  <div class="tile" onclick="showCard('OpenStats', 'not much to see here, have a github repo', 'completed june 2025', 'https://github.com/kurenathedev/OpenStats')">
+
+    <div class="project-title">Project OpenStats</div>
+    <div class="description">An open source simple webapp for viewing spotify stats!</div>
+    <div class="details">Rank 3 • Completed June 2025</div>
+  </div>
+
+
+  <div class="tile" onclick="showCard('MOKI', 'To be revealed', 'started feb 2025', 'nolink')">
+
+    <div class="project-title">Project MOKI</div>
+    <div class="description">To be revealed hehe...</div>
+    <div class="details">Rank 4 • In Progress</div>
+  </div>
+</div>
+
+<h2>Teams</h2>
+<div class="scroll-container" id="team-container">
+  <div class="tile">
+
+    <div class="project-title">Undecisive Modders</div>
+    <div class="description">very cool group!</div>
+    <div class="details"><a href="https://undecisive-modders.github.io">link to...</a></div>
+  </div>
+
+
+
+</div>
+
+
+
+
+
 
 <script>
-  const canvas = document.getElementById('perlinCanvas');
-  const ctx = canvas.getContext('2d');
-  const simplex = new SimplexNoise();
-  const scale = 0.002;
-  const zoffSpeed = 0.006;
-  let zoff = 0;
+let isCardOpen = null
+function showCardAbout(title, date) {
+  const card = document.getElementById('overlayCard');
+  const backdrop = document.getElementById('overlayBackdrop');
+  imgSrc = "https://avatars.githubusercontent.com/u/128738437?v=4&size=1024"
+  artists = "yeah i dont know either"
+  document.getElementById('cardImg').src = imgSrc;
+  document.getElementById('cardTitle').textContent = title;
+  document.getElementById('cardartists').textContent = artists;
+  document.getElementById('cardDate').textContent = date;
+      document.getElementById('cardurl').textContent = "send me an email!";
+  document.getElementById('cardurl').href = "mailto:kurena.rcmc@gmail.com";
+  isCardOpen = "yes"
+  card.classList.add('show');
+  card.style.display = 'block';
+  backdrop.style.display = 'block';
+}
 
-  let gif = null;
-  let isRecording = false;
-  let recordedFrames = [];
-  const framesToRecord = 30; // 1 second at 30fps
+function showCard(title, date, artists, link) {
+  const card = document.getElementById('overlayCard');
+  const backdrop = document.getElementById('overlayBackdrop');
+  document.getElementById('cardImg').src = "";
+  document.getElementById('cardTitle').textContent = title;
+  document.getElementById('cardartists').textContent = artists;
+  document.getElementById('cardDate').textContent = date;
+  if (link == "nolink"){
+document.getElementById('cardurl').style.display = "none";
 
-  document.getElementById('gifButton').addEventListener('click', function() {
-    if (!isRecording) {
-      startRecording();
-    } else {
-      stopRecording();
-    }
-  });
+      document.getElementById('cardurl').textContent = "";
+  } else {
+    document.getElementById('cardurl').textContent = "link to...";
+    document.getElementById('cardurl').href = link;
 
-  function startRecording() {
-    recordedFrames = [];
-    isRecording = true;
-    document.getElementById('gifButton').textContent = 'Recording...';
-    console.log('Recording started');
   }
+  isCardOpen = "yes"
+  card.classList.add('show');
+  card.style.display = 'block';
+  backdrop.style.display = 'block';
+}
 
-  function stopRecording() {
-    isRecording = false;
-    document.getElementById('gifButton').textContent = 'Processing...';
-
-    // Create GIF
-    gif = new GIF({
-      worker: false, // Don't use web worker
-      quality: 10,
-      width: canvas.width,
-      height: canvas.height
-    });
-
-    // Add frames
-    recordedFrames.forEach(frame => {
-      gif.addFrame(frame, {delay: 33}); // ~30fps
-    });
-
-    gif.on('finished', function(blob) {
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'perlin-noise.gif';
-      document.body.appendChild(a);
-      a.click();
-      setTimeout(() => {
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        document.getElementById('gifButton').textContent = 'Record GIF';
-      }, 100);
-    });
-
-    gif.render();
-  }
-
-  function drawNoise() {
-    const imageData = ctx.createImageData(canvas.width, canvas.height);
-    const data = imageData.data;
-
-    let i = 0;
-    for (let y = 0; y < canvas.height; y++) {
-      for (let x = 0; x < canvas.width; x++) {
-        const nx = x * scale;
-        const ny = y * scale;
-        const value = simplex.noise2D(nx + zoff, ny + zoff);
-        const normalizedValue = (value + 1) / 2;
-        const threshold = 0.5;
-
-        if (normalizedValue > threshold) {
-          const intensity = (normalizedValue - threshold) / (1 - threshold);
-          const r = 20 + Math.floor(235 * intensity * 0.8);
-          const g = 20 + Math.floor(100 * intensity);
-          const b = 20 + Math.floor(200 * intensity);
-
-          data[i++] = r;
-          data[i++] = g;
-          data[i++] = b;
-        } else {
-          data[i++] = 20;
-          data[i++] = 20;
-          data[i++] = 20;
-        }
-        data[i++] = 255;
-      }
-    }
-
-    ctx.putImageData(imageData, 0, 0);
-
-    // Capture frame if recording
-    if (isRecording && recordedFrames.length < framesToRecord) {
-      const frameCanvas = document.createElement('canvas');
-      frameCanvas.width = canvas.width;
-      frameCanvas.height = canvas.height;
-      const frameCtx = frameCanvas.getContext('2d');
-      frameCtx.drawImage(canvas, 0, 0);
-      recordedFrames.push(frameCanvas);
-
-      if (recordedFrames.length >= framesToRecord) {
-        stopRecording();
-      }
-    }
-
-    zoff += zoffSpeed;
-    requestAnimationFrame(drawNoise);
-  }
-
-  drawNoise();
+function closeCard() {
+  const card = document.getElementById('overlayCard');
+  const backdrop = document.getElementById('overlayBackdrop');
+  isCardOpen = "no"
+  card.classList.remove('show');
+  card.style.display = 'none';
+  backdrop.style.display = 'none';
+}
 </script>
 
-  </body>
+
+</body>
+<script>
+let isCardOpen = null
+function showCardAbout(title, date) {
+  const card = document.getElementById('overlayCard');
+  const backdrop = document.getElementById('overlayBackdrop');
+  imgSrc = "https://avatars.githubusercontent.com/u/128738437?v=4&size=1024"
+  artists = "yeah i dont know either"
+  document.getElementById('cardImg').src = imgSrc;
+  document.getElementById('cardTitle').textContent = title;
+  document.getElementById('cardartists').textContent = artists;
+  document.getElementById('cardDate').textContent = date;
+      document.getElementById('cardurl').textContent = "send me an email!";
+  document.getElementById('cardurl').href = "mailto:kurena.rcmc@gmail.com";
+  isCardOpen = "yes"
+  card.classList.add('show');
+  card.style.display = 'block';
+  backdrop.style.display = 'block';
+}
+
+function showCard(title, date, artists, link) {
+  const card = document.getElementById('overlayCard');
+  const backdrop = document.getElementById('overlayBackdrop');
+  document.getElementById('cardImg').src = "";
+  document.getElementById('cardTitle').textContent = title;
+  document.getElementById('cardartists').textContent = artists;
+  document.getElementById('cardDate').textContent = date;
+  if (link == "nolink"){
+document.getElementById('cardurl').style.display = "none";
+
+      document.getElementById('cardurl').textContent = "";
+  } else {
+    document.getElementById('cardurl').textContent = "link to...";
+    document.getElementById('cardurl').href = link;
+
+  }
+  isCardOpen = "yes"
+  card.classList.add('show');
+  card.style.display = 'block';
+  backdrop.style.display = 'block';
+}
+
+function closeCard() {
+  const card = document.getElementById('overlayCard');
+  const backdrop = document.getElementById('overlayBackdrop');
+  isCardOpen = "no"
+  card.classList.remove('show');
+  card.style.display = 'none';
+  backdrop.style.display = 'none';
+}
+</script>
+
 </html>
