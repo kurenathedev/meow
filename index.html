@@ -164,6 +164,7 @@
   }
 }
 </style>
+<title>kurena's home page!</title>
 </head>
 
 
@@ -183,7 +184,7 @@
 </div>
 
 <div class="intro tile-header">
-  <h1><strong>hi, i'm Kurena! a dev and avid weird person</strong></h1>
+  <h1><strong>hi, i'm kurena! a dev and avid weird person</strong></h1>
   <p>Here are some of my interests and projects!</p>
   <div style="display: flex; align-items: right;">
   <button class="view-toggle" style="position:relative;left: 85%;" onclick="showCardAbout('who am i?', 'I am a very cool person, i work a lot and i do voice acting as well!')">So... who IS kurena?</button>
@@ -202,7 +203,7 @@
   <div class="tile">
     <img src="interest2.png" alt="Interest B" class="project-thumbnail">
     <div class="project-title">LLM research</div>
-    <div class="description">i work, a lot, and i hate ai</div>
+    <div class="description">i work, a lot, and i develop and hate ai</div>
     <div class="details">I HATE AI RAHH</div>
   </div>
 
@@ -292,7 +293,8 @@ function showCard(title, date, artists, link) {
   document.getElementById('cardartists').textContent = artists;
   document.getElementById('cardDate').textContent = date;
   if (link == "nolink"){
-  document.getElementById('cardurl').display = "none";
+document.getElementById('cardurl').style.display = "none";
+
       document.getElementById('cardurl').textContent = "";
   } else {
     document.getElementById('cardurl').textContent = "link to...";
