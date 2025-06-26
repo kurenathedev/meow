@@ -13,10 +13,15 @@
   h1 {
     color:  rgb(255, 141, 211);
     margin-bottom: 1rem;
+    white-space: pre-line
   }
 
   a {
     color: #eee;
+white-space: pre-line
+  }
+  p {
+  white-space: pre-line
   }
 #project-container .tile:hover {
     cursor: pointer;
@@ -158,6 +163,8 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.4);
       align-items: center;
       gap: 1rem;
+      width: 35%;
+
     }
 .overlay-card.show {
   animation: popIn 0.2s ease-out;
@@ -201,9 +208,17 @@
   opacity: 0.2;
   pointer-events: none;
 }
+
+.header-containter {
+  display: flex;
+          gap: 1rem;
+      flex-direction: row;
+      text-align: left;
+}
+
 </style>
 <title>kurena's home page!</title>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+
 </head>
 
 <body>
@@ -211,9 +226,8 @@
   <div id="overthingy"></div>
  <video id="perlinCanvas" autoplay loop muted playsinline>
     <source src="noise.webm" type="video/webm">
-    Your browser does not support the video tag.
+
   </video>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
 
 <div class="overlay-backdrop" id="overlayBackdrop" onclick="closeCard()"></div>
 <div class="overlay-card" id="overlayCard">
@@ -228,13 +242,34 @@
 </div>
 </div>
 
-<div class="intro tile-header">
-  <h1><strong>hi, i'm kurena! a dev and avid weird person</strong></h1>
-  <p>Here are some of my interests and projects!</p>
-  <div style="display: flex; align-items: right;">
-  <button class="view-toggle" style="position:relative;" onclick="showCardAbout('who am i?', 'I am a very cool person, i work a lot and i do voice acting as well!')">So... who IS kurena?</button>
-    <div>
-</div></div></div>
+
+
+<div class="header-containter">
+  <div class="intro tile-header">
+    <h1><strong>hi, i'm kurena! a dev and avid weird person</strong></h1>
+    <p>Here are some of my interests and projects!</p>
+    <div style="display: flex; align-items: right;">
+    <button class="view-toggle" style="position:relative;" onclick="showCardAbout('who am i?', 'I am a very hard working person, i work a lot and i do voice acting as well!')">So... who IS kurena?</button>
+    </div>
+  </div>
+
+  <div class="tile-header" style="width:60%;height:max-content; ṕosition:flex;">
+
+    <p style="margin-bottom:0;margin-top:0;"><strong>News of kurena</strong></p>
+
+
+    <p class="details">i am freezing to death currently, its summer
+
+
+    june 25th 2025
+    </p>
+    <div style="display: flex; align-items: right;">
+
+    </div>
+  </div>
+</div>
+
+
 
 <h2>Interests</h2>
 <div class="scroll-container" id="interests-container">
@@ -307,6 +342,8 @@
 </div>
 
 
+<p class="details">kurena owns this; email <a href="mailto:kurena.rcmc@gmail.com">kurena.rcmc@gmail.com</a> for info</p>
+
 
 
 
@@ -364,55 +401,6 @@ function closeCard() {
 
 
 </body>
-<script>
-let isCardOpen = null
-function showCardAbout(title, date) {
-  const card = document.getElementById('overlayCard');
-  const backdrop = document.getElementById('overlayBackdrop');
-  imgSrc = "https://avatars.githubusercontent.com/u/128738437?v=4&size=1024"
-  artists = "yeah i dont know either"
-  document.getElementById('cardImg').src = imgSrc;
-  document.getElementById('cardTitle').textContent = title;
-  document.getElementById('cardartists').textContent = artists;
-  document.getElementById('cardDate').textContent = date;
-      document.getElementById('cardurl').textContent = "send me an email!";
-  document.getElementById('cardurl').href = "mailto:kurena.rcmc@gmail.com";
-  isCardOpen = "yes"
-  card.classList.add('show');
-  card.style.display = 'block';
-  backdrop.style.display = 'block';
-}
 
-function showCard(title, date, artists, link) {
-  const card = document.getElementById('overlayCard');
-  const backdrop = document.getElementById('overlayBackdrop');
-  document.getElementById('cardImg').src = "";
-  document.getElementById('cardTitle').textContent = title;
-  document.getElementById('cardartists').textContent = artists;
-  document.getElementById('cardDate').textContent = date;
-  if (link == "nolink"){
-document.getElementById('cardurl').style.display = "none";
-
-      document.getElementById('cardurl').textContent = "";
-  } else {
-    document.getElementById('cardurl').textContent = "link to...";
-    document.getElementById('cardurl').href = link;
-
-  }
-  isCardOpen = "yes"
-  card.classList.add('show');
-  card.style.display = 'block';
-  backdrop.style.display = 'block';
-}
-
-function closeCard() {
-  const card = document.getElementById('overlayCard');
-  const backdrop = document.getElementById('overlayBackdrop');
-  isCardOpen = "no"
-  card.classList.remove('show');
-  card.style.display = 'none';
-  backdrop.style.display = 'none';
-}
-</script>
 
 </html>
