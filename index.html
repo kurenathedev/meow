@@ -28,6 +28,26 @@ white-space: pre-line
 
 
 }
+.menu-bar {
+  position: fixed;
+  top: 0;
+  left: 0; /*! right: 3%; */
+  /*! display: none; */
+  grid-template-columns: auto 1fr 2fr auto;
+  gap: 3rem;
+  padding: 0.5rem 1rem;
+  background: rgba(24, 24, 24, 0.7);
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.5);
+  font-family: 'Segoe UI', sans-serif;
+  z-index: 9999;
+    backdrop-filter: blur(20px); /* THE FROST!! */
+  -webkit-backdrop-filter: blur(10px); /* Safari needs her own */
+  border-radius: 0px 0px 10px 10px;
+  width: 30px;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
   .view-toggle,
   .type-toggle {
     background: rgba(255, 141, 211, 0.2);
@@ -214,15 +234,19 @@ white-space: pre-line
           gap: 1rem;
       flex-direction: row;
       text-align: left;
+  padding-left: 40px;
 }
 
 </style>
 <title>kurena's home page!</title>
 
 </head>
-
 <body>
+<div class="menu-bar">
+  <a href="https://github.com/kurenathedev"><img class="optionbutton" src="github-mark-white.png" style="height: 40px;left: 10px;position: fixed;"></img></a>
+  <a href="https://ko-fi.com/kurenathecat"><img class="optionbutton" src="https://storage.ko-fi.com/cdn/logomarkLogo.png" style="height: 40px;left: 10px;position: fixed;"></img></a>
 
+</div>
   <div id="overthingy"></div>
  <video id="perlinCanvas" autoplay="" loop="" muted="" playsinline="">
     <source src="noise.webm" type="video/webm">
@@ -270,25 +294,25 @@ white-space: pre-line
 </div>
 
 
-
+<div style="min-height: 800px;padding-left: 40px;">
 <h2>Interests</h2>
 <div class="scroll-container" id="interests-container">
   <div class="tile">
-   
+
     <div class="project-title">Programming</div>
     <div class="description">i use JS HTML CSS and python</div>
     <div class="details">4 years</div>
   </div>
 
   <div class="tile">
- 
+
     <div class="project-title">LLM research</div>
     <div class="description">i work, a lot, and i develop and hate ai</div>
     <div class="details">I HATE AI RAHH</div>
   </div>
 
   <div class="tile">
- 
+
     <div class="project-title">Voice Actor work</div>
     <div class="description">lots of it, i like doing it</div>
     <div class="details">pls email me to learn more(in the so who is kurena thing)</div>
@@ -346,8 +370,8 @@ white-space: pre-line
   <img src="RCMC.png" style="width:40px;position:relative; top: -25%;left: 75%;"></div>
 </div>
 
-
-<p class="details">kurena owns this; email <a href="mailto:kurena.rcmc@gmail.com">kurena.rcmc@gmail.com</a> for info</p>
+<p class="details">kurena owns this; email <a href="mailto:kurena.rcmc@gmail.com">kurena.rcmc@gmail.com</a> for info or suggestions</p>
+</div>
 
 
 
@@ -403,6 +427,10 @@ function closeCard() {
   backdrop.style.display = 'none';
 }
 </script>
+
+
+
+
 
 
 
