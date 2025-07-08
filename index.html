@@ -49,37 +49,7 @@ white-space: pre-line
   border-radius: 0 10px 10px 0;
 }
 
-/* 🍔 Mobile view = bottom bar */
-@media (max-width: 768px) {
-  .menu-bar {
-    top: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: auto;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0.5rem;
-    border-radius: 10px 10px 0 0;
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
-  }
-  .header-containter {
-    flex-direction: column;
-    padding-left: 5px;
 
-  }
-  .tile-header {
-    width: 90%;
-    
-  }
-
-  .menu-bar img.optionbutton {
-    height: 32px;
-    position: static !important;
-  }
-}
   .view-toggle,
   .type-toggle {
     background: rgba(255, 141, 211, 0.2);
@@ -270,6 +240,36 @@ white-space: pre-line
 }
 
 
+@media (max-width: 768px) {
+  .menu-bar {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
+  }
+  .header-containter {
+    flex-direction: column;
+    padding-left: 5px;
+
+  }
+  .tile-header {
+    width: 90%;
+    
+  }
+
+  .menu-bar img.optionbutton {
+    height: 32px;
+    position: static !important;
+  }
+}
 
 </style>
 <title>kurena's home page!</title>
