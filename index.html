@@ -33,22 +33,42 @@ white-space: pre-line
 .menu-bar {
   position: fixed;
   top: 0;
-  left: 0; /*! right: 3%; */
-  /*! display: none; */
-  grid-template-columns: auto 1fr 2fr auto;
+  left: 0;
+  width: 30px;
+  display: flex;
+  flex-direction: column;
   gap: 3rem;
   padding: 0.5rem 1rem;
   background: rgba(24, 24, 24, 0.7);
-  box-shadow: 0 -4px 10px rgba(0,0,0,0.5);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
   font-family: 'Segoe UI', sans-serif;
   z-index: 9999;
-    backdrop-filter: blur(20px); /* THE FROST!! */
+  backdrop-filter: blur(20px); /* THE FROST!! */
   -webkit-backdrop-filter: blur(10px); /* Safari needs her own */
-  border-radius: 0px 0px 10px 10px;
-  width: 30px;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
+  border-radius: 0 10px 10px 0;
+}
+
+/* 🍔 Mobile view = bottom bar */
+@media (max-width: 768px) {
+  .menu-bar {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .menu-bar img.optionbutton {
+    height: 32px;
+    position: static !important;
+  }
 }
   .view-toggle,
   .type-toggle {
