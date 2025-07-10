@@ -5,12 +5,6 @@
 
 <style>
 
-
-
-
-
-
-
   body {
     font-family: Arial, sans-serif;
     background: #121212;
@@ -238,7 +232,14 @@ white-space: pre-line
   opacity: 0.2;
   pointer-events: none;
 }
-
+#miau {
+  width:60%;
+  height:max-content;
+  position:flex;
+}
+#icon {
+  /*! width:40px; */position:relative; top: -25%;left: 75%;
+}
 .header-containter {
   display: flex;
   gap: 1rem;
@@ -269,16 +270,16 @@ white-space: pre-line
   }
   .header-containter {
     flex-direction: column;
-    padding-left: 5px;
+    padding-left: 0px;
 
   }
   .bodycont {
-    padding-left: 5px
-
-
+    width: 103%;
+    padding-left: 5px;
+    /*! left: 2%; */
   }
 
-  .tile-header {
+  .tile-header, #miau {
     width: 90%;
 
   }
@@ -287,14 +288,24 @@ white-space: pre-line
     height: 32px;
     position: static !important;
   }
+  .scroll-container {
+    flex-direction: column;
+    width: 90%;
+    overflow-x: visible;
+  }
+  #icon{
+    width:40px;left: 75%;
+
+    top: -50%;
+  }
+  .tile {
+  width: 100%;
+  /*! height: max-content; */
+  }
 }
-
-
-
 
 </style>
 <title>kurena</title>
-  
 </head>
 <body cz-shortcut-listen="true">
 <noscript>
@@ -336,7 +347,7 @@ white-space: pre-line
     </div>
   </div>
 
-  <div class="tile-header" style="width:60%;height:max-content; ṕosition:flex;">
+  <div class="tile-header" id="miau" style="height:max-content; ṕosition:flex;">
 
     <p style="margin-bottom:0;margin-top:0;"><strong>News of kurena</strong></p>
 
@@ -425,7 +436,7 @@ white-space: pre-line
     <div class="description">founder and owner</div>
     <div class="details">no link yet :c    </div>
 
-  <img src="RCMC.png" alt="logo" style="width:40px;position:relative; top: -25%;left: 75%;"></div>
+  <img src="RCMC.png" alt="logo" id="icon"></div>
 </div>
 
 <p class="details">kurena owns this; email <a href="mailto:meow@kurena.rocks">meow@kurena.rocks</a> for info or suggestions, made by kurena, this, this is beef keezy(but friendly)</p>
