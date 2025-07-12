@@ -35,7 +35,7 @@
     }
 
     h1::after {
-
+        content: 'kurena';
     filter: blur(8px);
     position: absolute;
     /*   z-index: -1; */
@@ -94,7 +94,6 @@ white-space: pre-line
   z-index: -1;
   pointer-events: none;
 }
-
 
 
 
@@ -323,6 +322,27 @@ white-space: pre-line
 
 }
 
+
+
+.rcmc, .rcmc::after {
+    margin: 0;
+    font-size: 1.2rem;
+    background: linear-gradient(93deg,rgba(255, 0, 157, 1) 0%, rgba(79, 162, 255, 1) 26%, rgba(1, 253, 44, 1) 51%, rgba(255, 248, 0, 1) 78%, rgba(255, 0, 157, 1) 100%);
+    /*   background: linear-gradient(90deg in hsl longer hue, hsl(0 100% 70%) 0 0); */
+    background-size: 500% 100%;
+    animation: blend 30s infinite linear;
+    color: transparent;
+    background-clip: text;
+    }
+
+    .rcmc::after {
+    content: 'RCMC';
+    filter: blur(8px);
+    position: absolute;
+    /*   z-index: -1; */
+    left: 0;
+    mix-blend-mode: plus-lighter;
+    }
 @media (max-width: 768px) {
   .menu-bar {
     top: auto;
@@ -504,7 +524,7 @@ white-space: pre-line
 
   <div class="tile">
 
-<div class="project-title">RCMC</div>
+<div class="project-title"><h1 class="rcmc">RCMC</h1></div>
     <div class="description">founder and owner</div>
     <div class="details">no link yet :c    </div>
 
