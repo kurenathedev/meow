@@ -5,6 +5,7 @@
 
 <style>
 
+
   body {
     font-family: Arial, sans-serif;
     background: #121212;
@@ -13,12 +14,37 @@
     text-align: center;
   }
 
-  h1 {
-    color:  rgb(255, 141, 211);
+    /* credit to https://codepen.io/jh3y/ for the gradient text, awsome person */
+    h1 {
+        color:  rgb(255, 141, 211);
     margin-bottom: 1rem;
     white-space: pre-line
-  }
+  position: relative;
+    }
 
+    h1, h1::after {
+    margin: 0;
+    font-size: clamp(2rem, 1rem + 3vw, 3rem);
+    background: linear-gradient(93deg,rgba(255, 0, 230, 1) 0%, rgba(255, 212, 234, 1) 29%, rgba(255, 212, 234, 1) 76%, rgba(255, 0, 230, 1) 100%);
+    /*   background: linear-gradient(90deg in hsl longer hue, hsl(0 100% 70%) 0 0); */
+    background-size: 500% 100%;
+    animation: blend 30s infinite linear;
+    color: transparent;
+    background-clip: text;
+    }
+
+    h1::after {
+    content: 'kurena';
+    filter: blur(8px);
+    position: absolute;
+    /*   z-index: -1; */
+    left: 0;
+    mix-blend-mode: plus-lighter;
+    }
+
+@keyframes blend {
+  to { background-position: 500% 100%; }
+}
   a {
     color: #eee;
 white-space: pre-line
@@ -53,7 +79,7 @@ white-space: pre-line
 
   .view-toggle,
   .type-toggle {
-    background: linear-gradient(140deg,rgba(255, 141, 211, 1) 0%, rgba(247, 247, 247, 1) 100%);;
+    background: linear-gradient(93deg,rgba(247, 247, 247, 1) 0%, rgba(255, 141, 211, 1) 54%, rgba(247, 247, 247, 1) 99%);;
     color: #000000;
     padding: 0.5rem 1rem;
     border: none;
@@ -62,6 +88,9 @@ white-space: pre-line
     font-weight: bold;
     margin-bottom: 1rem;
     transition: transform 0.3s ease-out, background 0.3s ease-out;
+    animation: blend 30s infinite linear;
+    mix-blend-mode: plus-lighter;
+    background-size: 500% 100%;
   }
 .overlay-backdrop {
   position: fixed;
@@ -303,6 +332,8 @@ white-space: pre-line
   /*! height: max-content; */
   }
 }
+
+
 
 </style>
 <title>kurena</title>
