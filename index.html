@@ -35,7 +35,7 @@
     }
 
     h1::after {
-    content: 'kurena';
+
     filter: blur(8px);
     position: absolute;
     /*   z-index: -1; */
@@ -58,6 +58,46 @@ white-space: pre-line
 
 
 }
+
+#cardTitle {
+  position: relative;
+  font-size: clamp(2rem, 1rem + 3vw, 3rem);
+  background: linear-gradient(93deg,rgba(255, 0, 230, 1) 0%, rgba(255, 212, 234, 1) 29%, rgba(255, 212, 234, 1) 76%, rgba(255, 0, 230, 1) 100%);
+  background-size: 500% 100%;
+  animation: blend 30s infinite linear;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  overflow: visible; /* CRITICAL */
+}
+
+#cardTitle::after {
+  content: attr(data-title);
+  position: absolute;
+
+  /* 👇 MAKE IT COVER FULL SPACE */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: inherit;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  filter: blur(8px);
+  mix-blend-mode: plus-lighter;
+  z-index: -1;
+  pointer-events: none;
+}
+
+
+
+
 .menu-bar {
   position: fixed;
   top: 0;
@@ -108,7 +148,7 @@ white-space: pre-line
 }
   .view-toggle:hover,
   .type-toggle:hover {
-    
+    background: linear-gradient(140deg,rgba(255, 141, 211, 1) 0%, rgba(247, 247, 247, 1) 100%);
     transform: scale(1.1) translate(0, 1px);
   }
 
@@ -362,7 +402,7 @@ white-space: pre-line
   <h1 id="cardTitle"></h1>
   <p id="cardDate"></p>
   <p id="cardartists"></p>
-  <a id="cardurl">email!</a>
+  <a id="cardurl" class="details">email!</a>
   <br><br>
   <button onclick="closeCard()" style="margin-top: 1rem; background:linear-gradient(140deg,rgba(255, 141, 211, 1) 0%, rgba(247, 247, 247, 1) 100%); border:none; color:#121212; padding:0.5rem 1rem; border-radius:5px; cursor:pointer;">Close</button>
 </div>
@@ -489,6 +529,7 @@ function showCardAbout(title, date) {
   document.getElementById('cardTitle').textContent = title;
   document.getElementById('cardartists').textContent = artists;
   document.getElementById('cardDate').textContent = date;
+  document.getElementById('cardTitle').setAttribute('data-title', title);
       document.getElementById('cardurl').textContent = "send me an email!";
   document.getElementById('cardurl').href = "mailto:meow@kurena.rocks";
   isCardOpen = "yes"
@@ -502,6 +543,7 @@ function showCard(title, date, artists, link) {
   const backdrop = document.getElementById('overlayBackdrop');
   document.getElementById('cardImg').src = "";
   document.getElementById('cardTitle').textContent = title;
+  document.getElementById('cardTitle').setAttribute('data-title', title);
   document.getElementById('cardartists').textContent = artists;
   document.getElementById('cardDate').textContent = date;
   if (link == "nolink"){
@@ -509,6 +551,7 @@ document.getElementById('cardurl').style.display = "none";
 
       document.getElementById('cardurl').textContent = "";
   } else {
+  document.getElementById('cardurl').style.display = "inherit";
     document.getElementById('cardurl').textContent = "link to...";
     document.getElementById('cardurl').href = link;
 
