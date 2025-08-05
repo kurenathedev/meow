@@ -11,6 +11,17 @@
       margin: 0;
       padding: 0;
     }
+      #perlinCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: .2;
+      pointer-events: none;
+    }
     a {
       color: #eee;
     }
@@ -378,8 +389,11 @@
   </style>
 </head>
 <body>
-  <div class="background-pattern"></div>
-  
+ <video id="perlinCanvas" autoplay loop muted playsinline>
+    <source src="noise.webm" type="video/webm">
+    <!-- Fallback if video doesn't load -->
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;background: linear-gradient(45deg, #1a1a1a 25%, #222 25%, #222 50%, #1a1a1a 50%, #1a1a1a 75%, #222 75%); background-size: 20px 20px;"></div>
+  </video>
   <div class="social-buttons">
     <a href="https://github.com/kurenathedev" class="social-button" target="_blank">
       <i class="fab fa-github"></i>
