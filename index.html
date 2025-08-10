@@ -74,7 +74,7 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
       position: relative;
       padding: 20px;
     }
-    
+
     .background-pattern {
       position: fixed;
       top: 0;
@@ -83,13 +83,13 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
       height: 100%;
       z-index: -1;
       opacity: 0.05;
-      background: 
+      background:
         radial-gradient(circle at 10% 20%, rgba(255,141,211,0.2) 0%, transparent 20%),
         radial-gradient(circle at 90% 80%, rgba(255,141,211,0.2) 0%, transparent 20%),
         linear-gradient(45deg, #1a1a1a 25%, #222 25%, #222 50%, #1a1a1a 50%, #1a1a1a 75%, #222 75%);
       background-size: 20px 20px;
     }
-    
+
     .outer-wrapper {
       width: 100%;
       max-width: 1650px;
@@ -97,7 +97,7 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
       padding: 2rem;
       box-sizing: border-box;
     }
-    
+
     .card-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -105,7 +105,7 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
       perspective: 1000px;
       width: 100%;
     }
-    
+
     .bio-card {
       background: rgba(30, 30, 30, 0.3);
       border-radius: 16px;
@@ -119,12 +119,12 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
       overflow: hidden;
       height: auto;
     }
-    
+
     .bio-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
     }
-    
+
     .bio-card img {
       width: 100%;
       height: 200px;
@@ -134,20 +134,20 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
       border: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
-    
+
     .card-details {
       flex-grow: 1;
       display: flex;
       flex-direction: column;
     }
-    
+
     .bio-card h1 {
       font-size: 1.8rem;
       margin: 0 0 0.5rem;
       color: #f7f7f7;
       text-shadow: 0 1px 2px rgba(0,0,0,0.3);
     }
-    
+
     .bio-card h2 {
       color: rgba(255,141,211,1);
       font-size: 1.4rem;
@@ -155,7 +155,7 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
       position: relative;
       padding-bottom: 0.5rem;
     }
-    
+
     .bio-card h2::after {
       content: '';
       position: absolute;
@@ -166,14 +166,14 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
       background: rgba(255,141,211,1);
       border-radius: 3px;
     }
-    
+
     .bio-card .details {
       color: #ccc;
       font-size: 1rem;
       margin: 0.3rem 0;
       line-height: 1.6;
     }
-    
+
     .tile {
       background: rgba(255, 255, 255, 0.05);
       border-radius: 10px;
@@ -182,31 +182,31 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
       transition: all 0.3s ease;
       border-left: 3px solid rgba(255,141,211,0.7);
     }
-    
+
     .tile:hover {
       background: rgba(255, 255, 255, 0.1);
       transform: translateX(5px);
     }
-    
+
     .project-title {
       font-weight: 700;
       color: rgba(255,141,211,1);
       margin-bottom: 0.5rem;
       font-size: 1.1rem;
     }
-    
+
     .description {
       color: #ddd;
       font-size: 0.95rem;
       margin-bottom: 0.5rem;
     }
-    
+
     .project-details {
       color: #aaa;
       font-size: 0.85rem;
       font-style: italic;
     }
-    
+
     .btn {
       display: inline-block;
       margin-top: 1rem;
@@ -224,23 +224,23 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
       text-decoration: none;
       text-align: center;
     }
-    
-    .btn:hover { 
+
+    .btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     }
-    
+
     .btn:active {
       transform: translateY(1px);
     }
-    
+
     .social-links {
       display: flex;
       gap: 1.5rem;
       margin-top: 1.5rem;
       flex-wrap: wrap;
     }
-    
+
     .social-link {
       color: rgba(255,141,211,1);
       text-decoration: none;
@@ -250,23 +250,23 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
       align-items: center;
       gap: 0.5rem;
     }
-    
+
     .social-link i {
       font-size: 1.2rem;
     }
-    
+
     .social-link:hover {
       color: #f7f7f7;
       transform: translateY(-2px);
     }
-    
+
     .team-container {
       display: flex;
       flex-wrap: wrap;
       gap: 1.5rem;
       margin-top: 1rem;
     }
-    
+
     .team-card {
       background: rgba(255, 255, 255, 0.05);
       border-radius: 10px;
@@ -276,19 +276,19 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
       transition: all 0.3s ease;
       border-top: 2px solid rgba(255,141,211,0.7);
     }
-    
+
     .team-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
-    
+
     .team-title {
       font-weight: 700;
       color: #f7f7f7;
       margin-bottom: 0.5rem;
       font-size: 1.1rem;
     }
-    
+
     .team-logo {
       width: 60px;
       height: 60px;
@@ -298,7 +298,7 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
       border-radius: 10px;
       padding: 5px;
     }
-    
+
     .footer {
       text-align: center;
       margin-top: 2rem;
@@ -308,16 +308,16 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
       border-top: 1px solid rgba(255,255,255,0.1);
       grid-column: 1 / -1;
     }
-    
+
     .footer a {
       color: rgba(255,141,211,1);
       text-decoration: none;
     }
-    
+
     .footer a:hover {
       text-decoration: underline;
     }
-    
+
     .social-buttons {
       position: fixed;
       bottom: 20px;
@@ -327,7 +327,7 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
       gap: 15px;
       z-index: 100;
     }
-    
+
     .social-button {
       width: 50px;
       height: 50px;
@@ -343,12 +343,12 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
       border: 1px solid rgba(255,255,255,0.1);
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
-    
+
     .social-button:hover {
       transform: translateY(-5px);
       background: rgba(255,141,211,0.9);
     }
-    
+
     .pronouns {
       background: rgba(255,141,211,0.2);
       padding: 0.2rem 0.8rem;
@@ -357,7 +357,7 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
       display: inline-block;
       margin-left: 0.8rem;
     }
-    
+
     .badge {
       display: inline-block;
       background: rgba(255,141,211,0.15);
@@ -368,26 +368,26 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
       margin-right: 0.5rem;
       margin-bottom: 0.5rem;
     }
-    
+
     @media (max-width: 900px) {
       .card-container {
         gap: 1.5rem;
       }
-      
+
       .bio-card {
         padding: 1.5rem;
       }
     }
-    
+
     @media (max-width: 768px) {
       .outer-wrapper {
         padding: 1rem;
       }
-      
+
       .bio-card img {
         height: 180px;
       }
-      
+
       .social-buttons {
         flex-direction: row;
         bottom: 15px;
@@ -395,27 +395,27 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
         transform: translateX(-50%);
       }
     }
-    
+
     @media (max-width: 480px) {
       .bio-card {
         padding: 1.2rem;
       }
-      
+
       .bio-card img {
         height: 160px;
       }
-      
+
       .btn {
         padding: 0.6rem 1.2rem;
         font-size: 0.9rem;
       }
     }
-    
+
     .highlight {
       color: rgba(255,141,211,1);
       font-weight: 600;
     }
-    
+
     .quote {
       font-style: italic;
       border-left: 3px solid rgba(255,141,211,0.7);
@@ -441,11 +441,11 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
     <a href="https://discord.gg/uuMYzCDh7t" class="social-button" target="_blank">
       <i class="fab fa-discord"></i>
     </a>
-    <a href="mailto:meow@kurena.rocks" class="social-button">
+    <a class="social-button email-chooser-btn">
       <i class="fas fa-envelope"></i>
     </a>
   </div>
-  
+
   <div class="outer-wrapper">
     <div class="card-container">
       <!-- Profile Card -->
@@ -454,51 +454,49 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
         <div class="card-details">
           <h1>kurena <span class="pronouns">she/her</span></h1>
           <p class="details">machine learning dev • chaotic fun</p>
-          <p class="details"whimsy!!!!!!!! joy!!!!!(i develop and make programs and software, and engineering)></p>
-          
+          <p class="details"> whimsy!!!!!!!! joy!!!!! (i develop and make programs and software, and engineering)></p>
+
           <div class="quote">
             "full of joy and whimsy one shall be"
           </div>
-          
+
           <div class="social-links">
             <a href="https://github.com/kurenathedev" class="social-link" target="_blank">
               <i class="fab fa-github"></i> GitHub
             </a>
-            <a href="mailto:meow@kurena.rocks" class="social-link">
+            <a id="emailChooserBtn"  type="button" class="social-link email-chooser-btn">
               <i class="fas fa-envelope"></i> Email
             </a>
-            
+
           </div>
-          
-          <a href="mailto:meow@kurena.rocks" class="btn">
-            <i class="fas fa-paper-plane"></i> send me an email
-          </a>
+
+          <button id="emailChooserBtn2" class="btn email-chooser-btn" type="button"> <i class="fas fa-paper-plane"></i> send me an email </button>
         </div>
       </div>
-      
+
       <!-- Interests Card -->
       <div class="bio-card">
         <div class="card-details">
           <h2>Interests</h2>
-          
+
           <div class="tile">
             <div class="project-title">Programming</div>
             <div class="description">I use JavaScript, HTML, CSS, and Python</div>
             <div class="project-details">4 years of experience</div>
           </div>
-          
+
           <div class="tile">
             <div class="project-title">LLM Research</div>
             <div class="description">I work a lot, develop and work with AI</div>
             <div class="project-details"><span class="highlight">I HATE AI RAHH</span></div>
           </div>
-          
+
           <div class="tile">
             <div class="project-title">Voice Actor Work</div>
             <div class="description">i do lots and really enjoy it</div>
             <div class="project-details">Email me to learn more about my voice work</div>
           </div>
-          
+
           <div class="tech-stack" style="margin-top: 1.5rem;">
             <span class="badge">Python</span>
             <span class="badge">JavaScript</span>
@@ -510,47 +508,47 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
           </div>
         </div>
       </div>
-      
+
       <!-- Projects Card -->
       <div class="bio-card">
         <div class="card-details">
           <h2>Projects</h2>
-          
+
           <div class="tile" onclick="window.open('https://github.com/kurenathedev/meow', '_blank')">
             <div class="project-title">Project Woof Woof</div>
             <div class="description">this page!</div>
             <div class="project-details">Rank 1 • Completed June 2025</div>
           </div>
-          
+
           <div class="tile" onclick="window.open('https://discord.com/oauth2/authorize?client_id=1366111121991405658', '_blank')">
             <div class="project-title">Project Geminichan!</div>
             <div class="description">the LLM models that will change it all, on discord!</div>
             <div class="project-details">Rank 2 • V2.1.3 (with full subconscious systems)</div>
           </div>
-          
+
           <div class="tile" onclick="window.open('https://github.com/kurenathedev/OpenStats', '_blank')">
             <div class="project-title">Project OpenStats</div>
             <div class="description">an open source flaskapp for viewing Spotify stats!</div>
             <div class="project-details">Rank 3 • Completed June 2025</div>
           </div>
-          
+
           <div class="tile">
             <div class="project-title">Project MOKI</div>
             <div class="description">not yet revealed</div>
             <div class="project-details">Rank 4 • In Progress (Started Feb 2025)</div>
           </div>
-          
+
           <a href="https://github.com/kurenathedev?tab=repositories" class="btn" target="_blank">
             <i class="fab fa-github"></i> View All Projects
           </a>
         </div>
       </div>
-      
+
       <!-- Teams Card -->
       <div class="bio-card">
         <div class="card-details">
           <h2>Teams</h2>
-          
+
           <div class="team-container">
             <div class="team-card">
               <div class="team-title">Undecisive Modders</div>
@@ -559,33 +557,250 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
                 <a href="https://undecisive-modders.github.io/" target="_blank">site</a>
               </div>
             </div>
-            
+
             <div class="team-card">
               <div class="team-title">RCMC</div>
               <div class="description">Founder and Owner</div>
               <div class="project-details">no link</div>
             </div>
           </div>
-          
+
           <div style="margin-top: 1.5rem;">
             <h2>Collaboration</h2>
             <p class="details">do you have an interesting project?? collaborate???</p>
-            
-            <a href="mailto:meow@kurena.rocks" class="btn" style="margin-top: 1rem;">
+
+            <a id="emailChooserBtn3"  type="button" class="btn email-chooser-btn" style="margin-top: 1rem;">
               <i class="fas fa-handshake"></i> propose collaboration
             </a>
           </div>
         </div>
       </div>
-      
+
       <!-- Footer -->
       <div class="footer">
-        <p>kurena owns this site • Email <a href="mailto:meow@kurena.rocks">meow@kurena.rocks</a> for info or suggestions</p>
+        <p>kurena owns this site • Email <a id="emailChooserBtn4" class="email-chooser-btn" type="button">meow@kurena.rocks</a> send me an email </button> for info or suggestions</p>
         <p>Made with ❤️ by kurena • 2025</p>
       </div>
     </div>
   </div>
-  
+
+<div id="emailModal" aria-hidden="true" class="email-modal" role="dialog" aria-labelledby="emailModalTitle">
+  <div class="email-modal__overlay" data-close></div>
+  <div class="email-modal__panel" role="document">
+    <button class="email-modal__close" aria-label="Close">✕</button>
+    <h3 id="emailModalTitle">who you sendin' to? :3</h3>
+
+    <form id="emailForm">
+      <fieldset>
+        <legend class="sr-only">Choose type</legend>
+
+        <label class="email-option">
+          <input type="radio" name="to" value="business@kurena.rocks" checked>
+          <strong>Business</strong>
+          <div class="small">business@kurena.rocks</div>
+        </label>
+
+        <label class="email-option">
+          <input type="radio" name="to" value="meow@kurena.rocks">
+          <strong>General</strong>
+          <div class="small">meow@kurena.rocks</div>
+        </label>
+      </fieldset>
+
+      <label class="field">
+        <span class="field-label">Subject</span>
+        <input id="emailSubject" type="text" placeholder="Hi Kurena —" />
+      </label>
+
+      <label class="field">
+        <span class="field-label">Message (optional)</span>
+        <textarea id="emailBody" rows="5" placeholder="Write your message..."></textarea>
+      </label>
+
+      <div class="email-actions">
+        <button id="openMailBtn" class="btn" type="submit">
+          <i class="fas fa-paper-plane"></i> Open mail app
+        </button>
+        <button id="copyEmailBtn" class="btn" type="button">
+          <i class="fas fa-copy"></i> Copy address
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+  /* small accessibility helper */
+  .sr-only { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+  /* modal base */
+  .email-modal { display: none; position: fixed; inset: 0; z-index: 2000; font-family: inherit; }
+  .email-modal[aria-hidden="false"] { display: block; }
+
+  .email-modal__overlay {
+    position: absolute; inset: 0; background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+  }
+
+  .email-modal__panel {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(680px, 94vw);
+    background: rgba(30, 30, 30, 0.95);
+    border-radius: 14px;
+    padding: 1.2rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .email-modal__close {
+    position: absolute; right: 10px; top: 10px;
+    background: transparent; color: #eee; border: none; font-size: 1rem; cursor: pointer;
+  }
+
+  .email-modal h3 { margin: 0 0 .6rem; color: #f7f7f7; font-size: 1.2rem; }
+  fieldset { border: none; padding: 0; margin: 0 0 0.8rem; display:flex; gap: .6rem; flex-wrap:wrap; }
+  .email-option {
+    background: rgba(255,255,255,0.03);
+    padding: .6rem .8rem;
+    border-radius: 8px;
+    display:flex; flex-direction:column; gap: .25rem;
+    min-width: 170px;
+    border-left: 3px solid rgba(255,141,211,0.0);
+    cursor: pointer;
+  }
+  .email-option input { margin-right: .4rem; transform: translateY(2px); }
+  .email-option strong { color: rgba(255,141,211,1); font-size: 0.98rem; }
+  .email-option .small { color: #ccc; font-size: .85rem; }
+
+  .field { display:block; margin-bottom:.6rem; }
+  .field-label { display:block; color:#bbb; font-size:.85rem; margin-bottom:.25rem; }
+  input[type="text"], textarea {
+    width: 100%; padding:.6rem .7rem; border-radius:8px; border:1px solid rgba(255,255,255,0.06);
+    background: rgba(0,0,0,0.35); color:#eee; font-size: .95rem;
+  }
+
+  .email-actions { display:flex; gap:.6rem; margin-top:.6rem; justify-content:flex-end; flex-wrap:wrap; }
+  .email-actions .btn { padding:.6rem .9rem; font-size:.95rem; }
+
+  /* highlight selected option */
+  .email-option input:checked + * { /* no-op but keep for consistency */ }
+  .email-option input:checked, .email-option input:focus { outline: none; }
+  .email-option input:checked ~ .small { color: #ffd; }
+  .email-option input:checked { border-color: transparent; }
+  .email-option:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+
+  @media (max-width:600px) {
+    .email-modal__panel { padding: 1rem; }
+    .email-actions { justify-content:center; }
+  }
+</style>
+
+
+<script>
+(function(){
+  const triggers = document.querySelectorAll('.email-chooser-btn');
+  const modal = document.getElementById('emailModal');
+  const form = document.getElementById('emailForm');
+  const closeBtn = modal.querySelector('.email-modal__close');
+  const overlay = modal.querySelector('.email-modal__overlay');
+  const copyBtn = document.getElementById('copyEmailBtn');
+  const subjectInput = document.getElementById('emailSubject');
+  const bodyInput = document.getElementById('emailBody');
+
+  // store override address when trigger uses one not in the radio options
+  let overrideTo = null;
+
+  function openModal(pref = {}) {
+    // pref: { to, subject, body }
+    overrideTo = null;
+
+    // if `to` provided and matches a radio option, check it. otherwise keep overrideTo
+    if (pref.to) {
+      const radio = modal.querySelector(`input[name="to"][value="${pref.to}"]`);
+      if (radio) {
+        radio.checked = true;
+      } else {
+        // no matching radio — we'll use overrideTo when submitting
+        overrideTo = pref.to;
+        // optionally visually indicate a custom choice (not required)
+        modal.querySelectorAll('input[name="to"]').forEach(r => r.checked = false);
+      }
+    }
+
+    if (pref.subject) subjectInput.value = pref.subject;
+    if (pref.body) bodyInput.value = pref.body;
+
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    // focus subject so keyboard users can continue
+    subjectInput.focus();
+  }
+
+  function closeModal() {
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    // clear override but leave inputs (optional)
+    overrideTo = null;
+  }
+
+  // wire triggers
+  triggers.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const to = btn.dataset.to;
+      const subject = btn.dataset.subject || '';
+      const body = btn.dataset.body || '';
+      openModal({to, subject, body});
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', closeModal);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
+  });
+
+  // form submit -> build mailto using either the selected radio or the override
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const selectedRadio = form.querySelector('input[name="to"]:checked');
+    const to = overrideTo || (selectedRadio ? selectedRadio.value : '');
+    const subject = subjectInput.value || '';
+    const body = bodyInput.value || '';
+    if (!to) {
+      alert('No recipient selected.');
+      return;
+    }
+    const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+    setTimeout(closeModal, 200);
+  });
+
+  // copy currently selected or override address
+  copyBtn.addEventListener('click', async () => {
+    const selectedRadio = form.querySelector('input[name="to"]:checked');
+    const to = overrideTo || (selectedRadio ? selectedRadio.value : '');
+    if (!to) { alert('No address to copy'); return; }
+    try {
+      await navigator.clipboard.writeText(to);
+      const old = copyBtn.innerHTML;
+      copyBtn.innerHTML = 'copied ✓';
+      setTimeout(() => copyBtn.innerHTML = old, 1500);
+    } catch (err) {
+      alert('Could not copy — try selecting the address manually.');
+    }
+  });
+
+  // keep overrideTo updated if user toggles radios manually
+  modal.querySelectorAll('input[name="to"]').forEach(r => {
+    r.addEventListener('change', () => { overrideTo = null; });
+  });
+
+})();
+</script>
+
   <script>
     // Add subtle hover effects to all tiles
     document.querySelectorAll('.tile').forEach(tile => {
@@ -593,23 +808,23 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
         tile.style.transform = 'translateY(-5px)';
         tile.style.boxShadow = '0 8px 20px rgba(0,0,0,0.3)';
       });
-      
+
       tile.addEventListener('mouseleave', () => {
         tile.style.transform = 'translateY(0)';
         tile.style.boxShadow = 'none';
       });
     });
-    
+
     // Add animation to badges
     document.querySelectorAll('.badge').forEach((badge, index) => {
       badge.style.animation = `fadeIn 0.5s ease ${index * 0.1}s both`;
     });
-    
+
     // Add animation to team cards
     document.querySelectorAll('.team-card').forEach((card, index) => {
       card.style.animation = `slideIn 0.6s ease ${index * 0.2}s both`;
     });
-    
+
     // Create dynamic styles for animations
     const style = document.createElement('style');
     style.textContent = `
@@ -617,13 +832,14 @@ content="https://avatars.githubusercontent.com/u/128738437?v=4&size=512">
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
       }
-      
+
       @keyframes slideIn {
         from { opacity: 0; transform: translateX(-20px); }
         to { opacity: 1; transform: translateX(0); }
       }
     `;
     document.head.appendChild(style);
+
   </script>
 </body>
 </html>
