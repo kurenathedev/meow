@@ -1,0 +1,89 @@
+a {
+width: fit-content;
+display: inline-block;
+}
+body {
+background-color: #000000;
+color: #ffffff;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#perlinCanvas {
+height: 100px;
+}
+#windowthing {
+    left: 60%;
+    top: 10%;
+}
+#windowthingtwo {
+    left: 55%;
+    top: 57%;
+}
+#windowthingthree {
+    left: 72%;
+    top: 37%;
+}
+
+.windows {
+background-color: #ff00ff;
+width: fit-content;
+position: absolute;
+display:block;
+
+
+}
+#actualbody {
+width: 40%;
+height: 100%;
+background-color: #882288;
+position: relative;
+display: block;
+}
+
+.buttons {
+width:60px;
+height:40px;
+background-color:#ffffff;
+
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(140 140 140);
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+th,
+td {
+  color: #000000;
+  background-color: #ffffff;
+  border: 1px solid rgb(160 160 160);
+  padding: 8px 10px;
+}
+
+td:last-of-type {
+  text-align: center;
+}
+
+
+
+tfoot th {
+  text-align: right;
+}
+
+
+
+@media (max-width: 510px) {
+      #windowthing {
+      left: 60%;
+      top: 10%;
+      }
+      #windowthingtwo {
+      left: 55%;
+      top: 42%;
+      }
+      #windowthingthree {
+      left: 72%;
+      top: 67%;
+      }
+}
