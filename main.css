@@ -30,7 +30,7 @@ position: absolute;
 display:block;
 
 
-}
+}.creature {height:80px; width: 60%}
 #actualbody {
 width: 40%;
 height: 100%;
@@ -73,17 +73,19 @@ tfoot th {
 
 
 
-@media (max-width: 510px) {
-      #windowthing {
-      left: 60%;
-      top: 10%;
-      }
-      #windowthingtwo {
-      left: 55%;
-      top: 42%;
-      }
-      #windowthingthree {
-      left: 72%;
-      top: 67%;
-      }
+@media (max-width: 510px) {.creature{width: 100vw;}
+	#actualbody {
+		width: 77%;
+		margin-bottom: 13px;
+	}
+
+		.windows {
+		position:initial;
+}
+
+#windowthing {
+	position:absolute;
+	top:0px;
+	right: 0px;
+}
 }
