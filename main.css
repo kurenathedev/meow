@@ -30,7 +30,12 @@ position: absolute;
 display:block;
 
 
-}.creature {height:80px; width: 60%}
+}
+
+.creature {
+	height:80px; 
+	width: 60%;
+}
 #actualbody {
 width: 40%;
 height: 100%;
